@@ -16,17 +16,13 @@ public class CardDeliveryOrderDateChangeTest {
     private final String phone = getPhoneNumber();
     private final String city = getCity();
 
-    @BeforeEach
-    void setUp() {
-        open("http://localhost:9999");
+    @Test
+    void registration() {
         Configuration.holdBrowserOpen = true;
+        open("http://localhost:9999");
         $("[placeholder='Город']").setValue(city);
         $x("//input[@name='name']").setValue(name);
         $("[name='phone']").setValue(phone);
-    }
-
-    @Test
-    void registration() {
         $x("//input[@placeholder='Дата встречи']").click();
         $("[data-test-id='agreement']").click();
         $("[class='button__text']").click();
@@ -35,6 +31,11 @@ public class CardDeliveryOrderDateChangeTest {
 
     @Test
     void newDateForRegistration() {
+        Configuration.holdBrowserOpen = true;
+        open("http://localhost:9999");
+        $("[placeholder='Город']").setValue(city);
+        $x("//input[@name='name']").setValue(name);
+        $("[name='phone']").setValue(phone);
         $x("//input[@placeholder='Дата встречи']").click();
         $("[type='checkbox']").click();
         $("[class='button__text']").click();
