@@ -30,13 +30,13 @@ public class CardDeliveryOrderDateChangeTest {
         $x("//input[@placeholder='Дата встречи']").click();
         $("[data-test-id='agreement']").click();
         $("[class='button__text']").click();
-        $("[data-test-id='success-notification']").should(visible, Duration.ofSeconds(15));
+        $("[type='checkbox']").should(visible, Duration.ofSeconds(15));
     }
 
     @Test
     void newDateForRegistration() {
         $x("//input[@placeholder='Дата встречи']").click();
-        $("[data-test-id='agreement']").click();
+        $("[type='checkbox']").click();
         $("[class='button__text']").click();
         $x("//input[@placeholder='Дата встречи']").sendKeys(Keys.chord(Keys.CONTROL, "a"), Keys.DELETE);
         $x("//input[@placeholder='Дата встречи']").setValue(getNewDate());
