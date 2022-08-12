@@ -18,7 +18,6 @@ public class CardDeliveryOrderDateChangeTest {
 
     @Test
     void registration() {
-        Configuration.holdBrowserOpen = true;
         open("http://localhost:9999");
         $("[placeholder='Город']").setValue(city);
         $x("//input[@name='name']").setValue(name);
@@ -31,7 +30,6 @@ public class CardDeliveryOrderDateChangeTest {
 
     @Test
     void newDateForRegistration() {
-        Configuration.holdBrowserOpen = true;
         open("http://localhost:9999");
         $("[placeholder='Город']").setValue(city);
         $x("//input[@name='name']").setValue(name);
