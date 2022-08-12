@@ -20,13 +20,14 @@ public class CardDeliveryOrderDateChangeTest {
     void setUp() {
         open("http://localhost:9999");
         Configuration.holdBrowserOpen = true;
-        $("[placeholder='Город']").setValue(city);
-        $x("//input[@name='name']").setValue(name);
-        $("[name='phone']").setValue(phone);
+
     }
 
     @Test
     void registration() {
+        $("[placeholder='Город']").setValue(city);
+        $x("//input[@name='name']").setValue(name);
+        $("[name='phone']").setValue(phone);
         $x("//input[@placeholder='Дата встречи']").click();
         $("[data-test-id='agreement']").click();
         $("[class='button__text']").click();
@@ -36,6 +37,9 @@ public class CardDeliveryOrderDateChangeTest {
 
     @Test
     void newDateForRegistration() {
+        $("[placeholder='Город']").setValue(city);
+        $x("//input[@name='name']").setValue(name);
+        $("[name='phone']").setValue(phone);
         $x("//input[@placeholder='Дата встречи']").click();
         $("[data-test-id='agreement']").click();
         $("[class='button__text']").click();
@@ -45,6 +49,4 @@ public class CardDeliveryOrderDateChangeTest {
         $x("//span[contains(text(),'Перепланировать')]").click();
         $("[data-test-id='success-notification']").should(visible, Duration.ofSeconds(15));
     }
-
-
 }
