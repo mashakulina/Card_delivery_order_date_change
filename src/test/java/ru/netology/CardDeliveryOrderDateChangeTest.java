@@ -1,12 +1,12 @@
 package ru.netology;
 
-import com.codeborne.selenide.Configuration;
-import org.junit.jupiter.api.*;
+import org.junit.jupiter.api.AfterEach;
+import org.junit.jupiter.api.Test;
 import org.openqa.selenium.Keys;
 
 import java.time.Duration;
 
-import static com.codeborne.selenide.Condition.*;
+import static com.codeborne.selenide.Condition.visible;
 import static com.codeborne.selenide.Selenide.*;
 import static ru.netology.DataGenerator.*;
 
@@ -15,6 +15,7 @@ public class CardDeliveryOrderDateChangeTest {
     private final String name = getName();
     private final String phone = getPhoneNumber();
     private final String city = getCity();
+
 
     @AfterEach
     void close() {
