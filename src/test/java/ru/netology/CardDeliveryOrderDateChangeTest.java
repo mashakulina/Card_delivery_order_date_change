@@ -1,5 +1,6 @@
 package ru.netology;
 
+import com.codeborne.selenide.Condition;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.Test;
 import org.openqa.selenium.Keys;
@@ -7,7 +8,7 @@ import org.openqa.selenium.Keys;
 import java.time.Duration;
 
 import static com.codeborne.selenide.Condition.visible;
-import static com.codeborne.selenide.Selectors.*;
+import static com.codeborne.selenide.Selectors.byText;
 import static com.codeborne.selenide.Selenide.*;
 import static ru.netology.DataGenerator.*;
 
@@ -48,13 +49,12 @@ public class CardDeliveryOrderDateChangeTest {
         $("[name='phone']").setValue(phone);
         $("[data-test-id='agreement']").click();
         $("[class='button__text']").click();
-        $("[data-test-id='success-notification']").should(visible, Duration.ofSeconds(15));
+        $("[data-test-id='success-notification'] .notification__content").shouldHave(Condition.exactText("Встреча успешно запланирована на " + date)).shouldBe(Condition.visible, Duration.ofSeconds(20));
         $x("//input[@placeholder='Дата встречи']").sendKeys(Keys.chord(Keys.CONTROL, "a"), Keys.DELETE);
         $x("//input[@placeholder='Дата встречи']").setValue(otherDate);
         $("[class='button__text']").click();
         $x("//span[contains(text(),'Перепланировать')]").click();
-        $("[data-test-id='success-notification']").should(visible, Duration.ofSeconds(15));
-    }
+        $("[data-test-id='success-notification'] .notification__content").shouldHave(Condition.exactText("Встреча успешно запланирована на " + otherDate)).shouldBe(Condition.visible, Duration.ofSeconds(20));}
 
     @Test
     void shouldNoGivenNewDateForRegistration() {
@@ -66,7 +66,7 @@ public class CardDeliveryOrderDateChangeTest {
         $("[name='phone']").setValue(phone);
         $("[data-test-id='agreement']").click();
         $("[class='button__text']").click();
-        $("[data-test-id='success-notification']").should(visible, Duration.ofSeconds(15));
+        $("[data-test-id='success-notification'] .notification__content").shouldHave(Condition.exactText("Встреча успешно запланирована на " + date)).shouldBe(Condition.visible, Duration.ofSeconds(20));
         $x("//input[@placeholder='Дата встречи']").sendKeys(Keys.chord(Keys.CONTROL, "a"), Keys.DELETE);
         $x("//input[@placeholder='Дата встречи']").setValue(invalidDate);
         $("[class='button__text']").click();
